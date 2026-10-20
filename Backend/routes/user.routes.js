@@ -2,6 +2,8 @@ const express = require('expres');
 const router = express.Router();
 const {body}= require("express-validator")
 const userController= require('../controllers/user.controllers');
+const authMiddleware =require('../middleWares/auth.middlewre');
+
 
 route.post('/register'[
     body('email'),isEmail().withMessage('Invalid Email'),
@@ -19,5 +21,9 @@ router.post('/login',[
 ],
  userController.loginUser
 )
+router.get('/profile',authMiddleware.authUser,userController.getUSerProfile)
+
+
+
 
 module.exports= router;
