@@ -12,5 +12,12 @@ route.post('/register'[
 ],
     userController.registerUser
 )
+router.post('/login',[
+    body('email').isEmail().withMessage('invallid email'),
+    body('password').isLength({min:6}).withMessage('')
+
+],
+ userController.loginUser
+)
 
 module.exports= router;
